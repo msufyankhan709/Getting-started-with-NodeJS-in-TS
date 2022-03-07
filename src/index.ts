@@ -20,10 +20,6 @@ app.get('/message', async (req: any, resp: any) => {
 
     await producer.disconnect()
 });
-
-app.get('/sufyan', (req: any, resp: any) => {
-    resp.send('sufyan');
-});
 app.get('/messages',async (req: any, resp: any) => {
     const kafka = new Kafka({
         clientId: 'my-app',
@@ -33,7 +29,7 @@ app.get('/messages',async (req: any, resp: any) => {
     await consumer.connect()
     await consumer.subscribe({ topic: 'test-topic', fromBeginning: true })
     await consumer.run({
-        eachMessage: async ({ message }) => {
+        eachMessage: async ({message}) => {
             console.log({
                 value: message.value.toString(),
             })
