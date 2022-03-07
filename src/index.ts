@@ -6,9 +6,8 @@ const add = (a: number, b: number) => {
     return a + b;
 }
 
-app.get('/', (req: any) => {
-   console.log(add(10,24))
-   return add(10,23)
+app.get('/sufyan', (req: any, resp: any) => {
+    resp.send('hello');
 })
 
 app.listen(3001, () => {
